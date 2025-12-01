@@ -111,7 +111,7 @@ function Header() {
 
       <div
         ref={mouseTextRef}
-        className="absolute bottom-8 right-8 md:bottom-12 md:right-16 z-20 flex items-center gap-3 text-gray-400 opacity-0"
+        className="absolute bottom-24 right-8 md:bottom-12 md:right-16 z-20 flex items-center gap-3 text-gray-400 opacity-0"
       >
         <p className="text-sm md:text-base font-medium tracking-wide">
           Hover the sphere

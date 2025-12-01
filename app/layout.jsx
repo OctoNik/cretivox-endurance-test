@@ -17,6 +17,9 @@ export default function RootLayout({ children }) {
         <Toaster
           position="top-center"
           reverseOrder={false}
+          containerStyle={{
+            zIndex: 99999,
+          }}
           toastOptions={{
             className: "",
             style: {
@@ -28,20 +31,9 @@ export default function RootLayout({ children }) {
               borderRadius: "16px",
               boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
             },
-            success: {
-              iconTheme: {
-                primary: "#3EE08F",
-                secondary: "black",
-              },
-            },
-            error: {
-              iconTheme: {
-                primary: "#EF4444",
-                secondary: "white",
-              },
-            },
           }}
         />
+
         {children}
       </body>
     </html>

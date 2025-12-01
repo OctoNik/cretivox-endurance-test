@@ -3,7 +3,11 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLock,
+  faExclamationTriangle,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 
 export default function LoginModal({ onLoginSuccess }) {
@@ -13,6 +17,19 @@ export default function LoginModal({ onLoginSuccess }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (!username.trim() || !password.trim()) {
+      toast.error("Username & Password wajib diisi", {
+        icon: (
+          <FontAwesomeIcon
+            icon={faExclamationTriangle}
+            className="text-yellow-400"
+          />
+        ),
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -35,11 +52,17 @@ export default function LoginModal({ onLoginSuccess }) {
 
         window.location.reload();
       } else {
-        toast.error(data.message || "Cek lagi username & passwordnyaa.");
-        setLoading(false);
+        toast.error("Cek lagi cobaa isi yang teliti", {
+          icon: (
+            <FontAwesomeIcon icon={faTimesCircle} className="text-red-500" />
+          ),
+        });
       }
     } catch (err) {
-      toast.error("error");
+      toast.error("Network Error. Try again.", {
+        icon: "🌐",
+      });
+    } finally {
       setLoading(false);
     }
   };
@@ -54,7 +77,9 @@ export default function LoginModal({ onLoginSuccess }) {
         </div>
 
         <h2 className="text-2xl font-bold text-white mb-1">Konten Rahasia</h2>
-        <p className="text-white/60 text-sm mb-6">Eitss.. Login Duluuu</p>
+        <p className="text-white/60 text-sm mb-6">
+          Login dulu yaa biar bisa lihat-lihat
+        </p>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-3">
           <input
@@ -86,7 +111,7 @@ export default function LoginModal({ onLoginSuccess }) {
                 <span className="w-2 h-2 bg-black rounded-full animate-[bounce_1s_infinite_400ms]"></span>
               </div>
             ) : (
-              "Login"
+              "Unlock Profile"
             )}
           </button>
         </form>

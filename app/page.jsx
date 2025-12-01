@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUnlock } from "@fortawesome/free-solid-svg-icons";
 
 // Komponen UI
 import Navbar from "../components/ui/Navbar";
@@ -32,11 +34,10 @@ export default function HomePage() {
         typeof window !== "undefined" &&
         sessionStorage.getItem("login_success")
       ) {
-        toast.success("Kamu Berhasil Login", {
+        toast.success("Enjoy Sightseeing", {
           duration: 3000,
-          icon: "🔓",
+          icon: <FontAwesomeIcon icon={faUnlock} className="text-[#3EE08F]" />,
         });
-
         sessionStorage.removeItem("login_success");
       }
     }
