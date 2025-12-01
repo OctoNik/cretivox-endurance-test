@@ -5,13 +5,11 @@ import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUnlock } from "@fortawesome/free-solid-svg-icons";
+import SphereBackground from "../components/3d/SphereBackground";
 
-// Komponen UI
 import Navbar from "../components/ui/Navbar";
 import Footer from "../components/ui/Footer";
 import LoginModal from "../components/ui/LoginModal";
-
-// Komponen Sections
 import Header from "../components/sections/Header";
 import About from "../components/sections/About";
 import Experience from "../components/sections/Experience";
@@ -26,10 +24,8 @@ export default function HomePage() {
 
   useEffect(() => {
     const token = Cookies.get("token");
-
     if (token) {
       setIsAuthenticated(true);
-
       if (
         typeof window !== "undefined" &&
         sessionStorage.getItem("login_success")
@@ -41,7 +37,6 @@ export default function HomePage() {
         sessionStorage.removeItem("login_success");
       }
     }
-
     setIsChecking(false);
   }, []);
 
@@ -54,29 +49,35 @@ export default function HomePage() {
 
   return (
     <main
-      className={`bg-black text-gray-100 font-sans ${
+      className={`bg-black text-gray-100 font-sans w-full relative overflow-x-hidden ${
         !isAuthenticated ? "h-screen overflow-hidden" : "min-h-screen"
       }`}
     >
-      {isAuthenticated && !activeProject && <Navbar />}
+      <div className="absolute top-0 left-0 w-full h-[130vh] z-0 pointer-events-none">
+        <SphereBackground />
+      </div>
 
-      <Header />
+      <div className="relative z-10 w-full">
+        {isAuthenticated && !activeProject && <Navbar />}
 
-      {!isAuthenticated && <LoginModal onLoginSuccess={handleLoginSuccess} />}
+        <Header />
 
-      {isAuthenticated && (
-        <>
-          <About />
-          <Experience />
-          <TechStack />
-          <Projects
-            activeProject={activeProject}
-            setActiveProject={setActiveProject}
-          />
-          <Contact />
-          <Footer />
-        </>
-      )}
+        {!isAuthenticated && <LoginModal onLoginSuccess={handleLoginSuccess} />}
+
+        {isAuthenticated && (
+          <>
+            <About />
+            <Experience />
+            <TechStack />
+            <Projects
+              activeProject={activeProject}
+              setActiveProject={setActiveProject}
+            />
+            <Contact />
+            <Footer />
+          </>
+        )}
+      </div>
     </main>
   );
 }

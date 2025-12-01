@@ -22,7 +22,7 @@ function About() {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: leftEl.closest("section"), // Trigger from the section
+        trigger: leftEl.closest("section"),
         start: "top 50%",
         toggleActions: "play none none reverse",
       },
@@ -32,22 +32,22 @@ function About() {
       leftEl,
       { opacity: 0, x: -100 },
       { opacity: 1, x: 0, duration: 1, ease: "power2.out" },
-      0 // Start at 0 seconds
+      0
     ).fromTo(
       rightEl,
       { opacity: 0, x: 100 },
       { opacity: 1, x: 0, duration: 1, ease: "power2.out" },
-      0 // Start also at 0 seconds (parallel animation)
+      0
     );
 
     return () => {
-      tl.kill(); // Kill the timeline on cleanup
+      tl.kill();
       if (tl.scrollTrigger) tl.scrollTrigger.kill();
     };
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-black overflow-hidden">
+    <section id="about" className="py-20 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 items-center max-w-5xl mx-auto">
           <div ref={leftColRef} className="lg:col-span-2 flex justify-center">
@@ -73,9 +73,9 @@ function About() {
               </p>
               <p>
                 Beyond coding, I enjoy exploring new places and foods, and
-                finding beauty in the surroundings – a reminder to stay grounded
+                finding beauty in the surroundings - a reminder to stay grounded
                 and grateful. I also love playing badminton and spending time
-                with my dog! 🍜✈️🏸🐾
+                with my dog!
               </p>
             </div>
           </div>

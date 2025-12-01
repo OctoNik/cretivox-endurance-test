@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faMousePointer } from "@fortawesome/free-solid-svg-icons";
 import { TypeAnimation } from "react-type-animation";
-import SphereBackground from "../3d/SphereBackground";
 
 gsap.registerPlugin(useGSAP);
 
@@ -14,8 +13,6 @@ const maxWordWidth = "5ch";
 
 function Header() {
   const containerRef = useRef(null);
-  const [backgroundLoaded, setBackgroundLoaded] = useState(true);
-
   const heading1Ref = useRef(null);
   const heading2Ref = useRef(null);
   const mouseTextRef = useRef(null);
@@ -23,7 +20,7 @@ function Header() {
 
   useGSAP(
     () => {
-      if (!backgroundLoaded || !containerRef.current) return;
+      if (!containerRef.current) return;
 
       const elementsToAnimate = [
         heading1Ref.current,
@@ -55,21 +52,17 @@ function Header() {
           mouseTextRef.current,
           { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
           "-=0.2"
-        ); // Muncul terakhir
+        );
     },
-    { dependencies: [backgroundLoaded], scope: containerRef }
+    { scope: containerRef }
   );
 
   return (
     <section
       id="home"
       ref={containerRef}
-      className="relative h-screen flex items-center justify-start text-left overflow-hidden bg-black"
+      className="relative h-screen flex items-center justify-start text-left overflow-hidden bg-transparent"
     >
-      <div className="canvas-container absolute inset-0 z-0">
-        <SphereBackground />
-      </div>
-
       <div className="relative z-10 p-4 pl-12 md:pl-24 lg:pl-32">
         <h1
           ref={heading1Ref}
