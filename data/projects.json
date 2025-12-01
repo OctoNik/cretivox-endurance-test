@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Outfitology - Outfit Inspiration Website",
+    "description": "A visual discovery platform similar to Pinterest for browsing, discovering, and saving fashion inspiration into personalized boards.",
+    "image": "/Outfitology.webp",
+    "link": "https://outfitology-frontend.pages.dev",
+    "tech": ["AngularJS", "Node.JS", "MongoDB"]
+  },
+  {
+    "id": 2,
+    "title": "UploadItIn - Essay Grading System",
+    "description": "An educational web app for managing essay assignments, featuring Automated Essay Scoring (AES) using the Latent Semantic Analysis (LSA) NLP method.",
+    "image": "/uploaditin.webp",
+    "link": "https://uploaditin-production.up.railway.app/",
+    "tech": ["Python", "Supabase", "Html/CSS/JS"]
+  },
+  {
+    "id": 3,
+    "title": "Android Fitness App",
+    "description": "A comprehensive mobile fitness companion featuring gym and cardio workout guides, along with health tools like BMI and protein calculators.",
+    "image": "/fitnessappandroid.webp",
+    "link": "https://github.com/OctoNik/Fitness-App-Mobile",
+    "tech": ["Flutter", "Firebase", "Dart"]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "year": "August 2025 - November 2025",
+    "role": "Web Developer (Intern)",
+    "company": "Tarumanagara University - IT and Data Center",
+    "description": "Developed and maintained web forms, menus, and custom applications for official assignments and classroom inventory management using ASP.NET, VB.NET, HTML, CSS, and JavaScript, including creating and implementing features to manage and track classroom assets."
+  },
+  {
+    "id": 2,
+    "year": "2024 - Present",
+    "role": "Marketing Team (Part-time)",
+    "company": "Tarumanagara Foundation",
+    "description": "Served as a Student Marketing Team member, promoting the university at education fairs and school presentations. Responsibilities included explaining study programs, detailing campus facilities, and addressing inquiries from prospective high school students."
+  }
+]
