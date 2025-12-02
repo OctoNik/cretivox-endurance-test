@@ -116,7 +116,7 @@ function Contact() {
           </div>
         </div>
 
-        <div className="absolute bottom-32 w-full text-center md:hidden">
+        <div className="absolute bottom-20 w-full text-center md:hidden">
           <p className="text-white/40 text-5xl font-black">
             FUTURE
             <br />

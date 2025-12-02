@@ -36,11 +36,17 @@ export default function Lanyard({
   }, []);
 
   return (
-    <div className="relative z-0 w-full h-full flex justify-center items-center">
+    // PERBAIKAN DI SINI:
+    // Tambahkan style={{ touchAction: 'none' }}
+    // Ini bikin browser GAK nge-scroll saat area ini disentuh, jadi drag-nya lancar.
+    <div
+      className="relative z-0 w-full h-full flex justify-center items-center"
+      style={{ touchAction: "none" }}
+    >
       <Canvas
         camera={{ position: position, fov: fov }}
         gl={{ alpha: transparent }}
-        dpr={[1, 2]} // Optimasi resolusi
+        dpr={[1, 2]}
         onCreated={({ gl }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
         }
@@ -239,7 +245,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
           resolution={[1000, 1000]}
           useMap
           map={lanyardTexture}
-          repeat={[-3, 1]}
+          repeat={[-4, 1]}
           lineWidth={1}
         />
       </mesh>
