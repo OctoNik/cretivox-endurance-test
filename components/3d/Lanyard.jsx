@@ -36,20 +36,29 @@ export default function Lanyard({
   }, []);
 
   return (
-    // PERBAIKAN DI SINI:
-    // Tambahkan style={{ touchAction: 'none' }}
-    // Ini bikin browser GAK nge-scroll saat area ini disentuh, jadi drag-nya lancar.
-    <div
-      className="relative z-0 w-full h-full flex justify-center items-center"
-      style={{ touchAction: "none" }}
-    >
+    <div className="relative z-0 w-full h-full flex justify-center items-center">
       <Canvas
-        camera={{ position: position, fov: fov }}
+        camera={{ position: position, fov: isMobile ? 35 : fov }}
         gl={{ alpha: transparent }}
         dpr={[1, 2]}
-        onCreated={({ gl }) =>
-          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
-        }
+        onCreated={({ gl }) => {
+          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1);
+
+          gl.domElement.addEventListener(
+            "touchstart",
+            (e) => {
+              const touch = e.touches[0];
+              const width = window.innerWidth;
+
+              const margin = width * 0.35;
+
+              if (touch.clientX > margin && touch.clientX < width - margin) {
+                e.preventDefault();
+              }
+            },
+            { passive: false }
+          );
+        }}
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
