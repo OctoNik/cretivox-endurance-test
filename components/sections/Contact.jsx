@@ -1,138 +1,132 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {
-  faLinkedin,
-  faGithub,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+import Lanyard from "../3d/Lanyard";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Contact() {
   const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const paragraphRef = useRef(null);
-  const iconsRef = useRef(null);
-  const emailRef = useRef(null);
+  const manifestRef = useRef(null);
+  const futureRef = useRef(null);
+  const cretivoxRef = useRef(null);
+
+  const [showLanyard, setShowLanyard] = useState(false);
 
   useGSAP(
     () => {
       if (!sectionRef.current) return;
-      const triggers = [];
-      const elementsToAnimate = [
-        headingRef.current,
-        paragraphRef.current,
-        iconsRef.current,
-        emailRef.current,
-      ];
 
-      gsap.set(elementsToAnimate, { opacity: 0, y: 50 });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      elementsToAnimate.forEach((el, index) => {
-        if (el) {
-          const tween = tl.to(
-            el,
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power3.out",
-            },
-            index * 0.15
-          );
-        }
-      });
-
-      if (tl.scrollTrigger) {
-        triggers.push(tl.scrollTrigger);
-      }
-
-      const refreshTimeout = setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 100);
-
-      return () => {
-        clearTimeout(refreshTimeout);
-        triggers.forEach((trigger) => trigger && trigger.kill());
+      const triggerOpts = {
+        trigger: sectionRef.current,
+        start: "top 70%",
+        toggleActions: "play none none reverse",
       };
+
+      gsap.fromTo(
+        manifestRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: triggerOpts,
+        }
+      );
+
+      gsap.fromTo(
+        futureRef.current,
+        { x: -100, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: triggerOpts,
+        }
+      );
+
+      gsap.fromTo(
+        cretivoxRef.current,
+        { x: 100, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: triggerOpts,
+        }
+      );
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 60%",
+        onEnter: () => setShowLanyard(true),
+        once: true,
+      });
     },
     { scope: sectionRef }
   );
 
   return (
-    <section id="contact" className="py-24 bg-black" ref={sectionRef}>
-      <div className="container mx-auto px-6 text-center max-w-3xl">
-        <h2
-          ref={headingRef}
-          className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#3EE08F] to-[#0A4F6B] mb-6"
-        >
-          Get In Touch
-        </h2>
-        <p
-          ref={paragraphRef}
-          className="text-lg text-gray-300 mb-12 leading-relaxed"
-        >
-          I’m always open to discussing new projects, creative ideas or
-          opportunities to be part of your visions. Feel free to reach out!
-        </p>
+    <section
+      id="contact"
+      className="relative h-screen bg-transparent overflow-hidden"
+      ref={sectionRef}
+    >
+      <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center items-center pointer-events-none select-none">
         <div
-          ref={iconsRef}
-          className="flex justify-center space-x-6 md:space-x-8 mb-12"
+          ref={manifestRef}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center mt-32 md:mt-0"
         >
-          <a
-            href="https://linkedin.com/in/nikolausnathaniel"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-[#3EE08F] transition duration-300 text-3xl md:text-4xl transform hover:scale-110"
-            aria-label="LinkedIn"
-          >
-            <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-          <a
-            href="https://github.com/OctoNik"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-[#3EE08F] transition duration-300 text-3xl md:text-4xl transform hover:scale-110"
-            aria-label="GitHub"
-          >
-            <FontAwesomeIcon icon={faGithub} />
-          </a>
-          <a
-            href="https://instagram.com/nath.laus"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-[#3EE08F] transition duration-300 text-3xl md:text-4xl transform hover:scale-110"
-            aria-label="Instagram"
-          >
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
+          <p className="text-white/40 text-lg md:text-xl font-bold tracking-[0.3em]">
+            Soon to be
+          </p>
         </div>
-        <div
-          ref={emailRef}
-          className="flex items-center justify-center space-x-3 text-lg text-gray-300"
-        >
-          <FontAwesomeIcon icon={faEnvelope} className="text-[#3EE08F]" />
-          <a
-            href="mailto:nikolauscontact@gmail.com"
-            className="hover:text-[#3EE08F] transition duration-300"
+
+        <div className="w-full h-full flex justify-between px-2 md:px-30">
+          {/* FUTURE */}
+          <div
+            ref={futureRef}
+            className="h-full flex items-start justify-start"
           >
-            nikolauscontact@gmail.com
-          </a>
+            <h1
+              className="text-[12vh] md:text-[17vh] font-black text-transparent bg-clip-text bg-gradient-to-b from-white/50 to-white/5 hidden md:block tracking-widest"
+              style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+            >
+              FUTURE
+            </h1>
+          </div>
+
+          {/* CRETIVOX */}
+          <div
+            ref={cretivoxRef}
+            className="h-full flex items-start justify-end"
+          >
+            <h1
+              className="text-[12vh] md:text-[17vh] font-black text-transparent bg-clip-text bg-gradient-to-t from-white/50 to-white/5 hidden md:block tracking-widest"
+              style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+            >
+              CRETIVOX
+            </h1>
+          </div>
         </div>
+
+        <div className="absolute bottom-32 w-full text-center md:hidden">
+          <p className="text-white/40 text-5xl font-black">
+            FUTURE
+            <br />
+            CRETIVOX
+          </p>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 z-10 w-full h-full">
+        {showLanyard && <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} />}
       </div>
     </section>
   );

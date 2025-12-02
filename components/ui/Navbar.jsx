@@ -4,14 +4,12 @@ import React, { useState, useEffect } from "react";
 import PillNav from "./PillNav";
 import Cookies from "js-cookie";
 
-// TAMBAHAN: Menu Logout dimasukkan ke sini dengan properti khusus 'isLogout: true'
 const navItems = [
   { label: "Home", href: "#home", hideInNav: true },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-  { label: "Logout", href: "#logout", isLogout: true }, // Menu Baru
+  { label: "Logout", href: "#logout", isLogout: true },
 ];
 
 function Navbar() {
@@ -23,7 +21,6 @@ function Navbar() {
   };
 
   useEffect(() => {
-    // Filter hanya item yang punya ID halaman (bukan logout)
     const sections = navItems
       .filter((item) => !item.isLogout && !item.hideInNav)
       .map((item) => document.getElementById(item.href.substring(1)));
@@ -52,7 +49,6 @@ function Navbar() {
   }, []);
 
   return (
-    // Container dikembalikan sederhana karena hanya ada 1 elemen (PillNav)
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center pointer-events-none">
       <div className="pointer-events-auto">
         <PillNav
@@ -60,7 +56,7 @@ function Navbar() {
           logoAlt="Logo"
           items={navItems}
           activeHref={activeHref}
-          onLogout={handleLogout} // Oper fungsi logout ke PillNav
+          onLogout={handleLogout}
           className="custom-nav"
           ease="power2.easeOut"
           baseColor="#000000ff"
