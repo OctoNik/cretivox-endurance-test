@@ -1,16 +1,16 @@
 [
   {
     "id": 1,
-    "year": "August 2025 - November 2025",
-    "role": "Web Developer (Intern)",
-    "company": "Tarumanagara University - IT and Data Center",
-    "description": "Developed and maintained web forms, menus, and custom applications for official assignments and classroom inventory management using ASP.NET, VB.NET, HTML, CSS, and JavaScript, including creating and implementing features to manage and track classroom assets."
+    "year": "Agustus 2025 - November 2025",
+    "role": "Web Developer (Magang)",
+    "company": "Universitas Tarumanagara - PUSDATIN",
+    "description": "Ngebangun dan maintenance web kampus, bikin form digital, dan aplikasi inventaris kelas pake ASP.NET, HTML, CSS, & JS. Intinya bikin hidup dosen dan staff lebih mudah lah."
   },
   {
     "id": 2,
-    "year": "2024 - Present",
-    "role": "Marketing Team (Part-time)",
-    "company": "Tarumanagara Foundation",
-    "description": "Served as a Student Marketing Team member, promoting the university at education fairs and school presentations. Responsibilities included explaining study programs, detailing campus facilities, and addressing inquiries from prospective high school students."
+    "year": "2024 - Sekarang",
+    "role": "Tim Marketing (Part-time)",
+    "company": "Yayasan Tarumanagara",
+    "description": "Jadi garda terdepan buat promosiin kampus di berbagai pameran pendidikan. Kerjaan gua jelasin prodi, pamerin fasilitas kampus, dan jawab kepo-keponya anak SMA."
   }
 ]

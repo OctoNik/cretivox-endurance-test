@@ -1,16 +1,16 @@
 [
   {
     "id": 1,
-    "title": "Outfitology - Outfit Inspiration Website",
-    "description": "A visual discovery platform similar to Pinterest for browsing, discovering, and saving fashion inspiration into personalized boards.",
+    "title": "Outfitology - Web Inspirasi OOTD",
+    "description": "Platform visual ala Pinterest buat nyari, nyimpen, dan ngatur inspirasi fashion biar gak bingung mau pake baju apa hari ini.",
     "image": "/Outfitology.webp",
     "link": "https://outfitology-frontend.pages.dev",
     "tech": ["AngularJS", "Node.JS", "MongoDB"]
   },
   {
     "id": 2,
-    "title": "UploadItIn - Essay Grading System",
-    "description": "An educational web app for managing essay assignments, featuring Automated Essay Scoring (AES) using the Latent Semantic Analysis (LSA) NLP method.",
+    "title": "UploadItIn - Sistem Penilai Esai",
+    "description": "Web app edukasi yang bisa nilai esai otomatis pake NLP (LSA). Guru senang, murid tenang, nilai langsung keluar.",
     "image": "/uploaditin.webp",
     "link": "https://uploaditin-production.up.railway.app/",
     "tech": ["Python", "Supabase", "Html/CSS/JS"]
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "title": "Android Fitness App",
-    "description": "A comprehensive mobile fitness companion featuring gym and cardio workout guides, along with health tools like BMI and protein calculators.",
+    "description": "Teman setia buat nge-gym. Ada panduan latihan, kalkulator BMI, sama itungan protein biar *goals* badan impian tercapai.",
     "image": "/fitnessappandroid.webp",
     "link": "https://github.com/OctoNik/Fitness-App-Mobile",
     "tech": ["Flutter", "Firebase", "Dart"]

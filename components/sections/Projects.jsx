@@ -83,7 +83,7 @@ function Projects({ activeProject, setActiveProject }) {
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 50%",
+            start: "top 85%",
             toggleActions: "play none none reverse",
           },
         });
@@ -129,7 +129,7 @@ function Projects({ activeProject, setActiveProject }) {
           ref={headingRef}
           className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#3EE08F] to-[#0A4F6B] mb-16 pb-2"
         >
-          My Projects
+          Project Kelompok di Kuliah
         </h2>
 
         <AnimatePresence>
